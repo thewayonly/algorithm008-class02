@@ -8,56 +8,51 @@
   
 二叉搜索树，时间复杂度一般为O(log n)<br />
 
+* python示例：
+```
+class TreeNode:
+    def __init__(self, val):
+    self.val = val
+    self.left, self.right = None, None
+```
+
 ### 1.2 树的遍历代码写法
-#### 中序遍历
-```java
-public class temp{
-        public List<Integer> inorderTraversal(TreeNode root) {
-            List<Integer> res = new ArrayList<>();
-            helper(root, res);
-            return res;
-        }
 
-        public void helper(TreeNode root, List<Integer> res) {
-            if (root != null) {
-                if (root.left != null) {
-                    helper(root.left, res);
-                }
-                res.add(root.val);
-                if (root.right != null) {
-                    helper(root.right, res);
-                }
-            }
-        }
-}
-```
-#### 前序遍历
-```java
-public class temp{
-        public List<Integer> preorderTraversal(TreeNode root) {
-            List<Integer> res = new ArrayList<>();
-            helper(root, res);
-            return res;
-        }
+ ```
+ class TreeNode:
+    def __init__(self,val):
+        self val = val
+        self.left, self.right = None, None
 
-        public void helper(TreeNode root, List<Integer> res) {
-            if (root != null) {
-                res.add(root.val);
-                if (root.left != null) {
-                    helper(root.left, res);
-                }
-                if (root.right != null) {
-                    helper(root.right, res);
-                }
-            }
-        }
-}
-```
+class Tree:
+    def __init__(self, root: TreeNode):
+        self.traverse = []
+        self.root = root
+
+    def preorder(self, root)        
+        if root:
+            self.traverse.apend(root.val)
+            self.preorder(root.left)
+            self.preorder(root.right)
+
+    def inorder(self, root)        
+        if root:
+            self.inorder(root.left)
+            self.traverse.apend(root.val)
+            self.inorder(root.right)
+
+    def postorder(self, root)        
+        if root:
+            self.postorder(root.left)
+            self.postorder(root.right)  
+            self.traverse.apend(root.val)    
+ ```   
+
 ### 1.3 递归与迭代
 树的遍历建议使用递归写法，递归不代表程序运行效率低。在现代编译器对递归程序的优化下，只要算法本身不写崩，
 递归程序的运行效率基本可等同非递归写法。
 
-## 2.面试做题步骤:
+## 2. 面试做题步骤:
     1、和面试官共同把题目搞清楚
     2、想解决方案，并从中找出最优的(time & space)
     3、code
